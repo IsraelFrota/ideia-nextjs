@@ -1,0 +1,31 @@
+{
+  "name": "ideia-nextjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IsraelFrota/ideia-nextjs.git"
+  },
+  "keywords": [],
+  "author": "Desenvolvedor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IsraelFrota/ideia-nextjs/issues"
+  },
+  "homepage": "https://github.com/IsraelFrota/ideia-nextjs#readme",
+  "dependencies": {
+    "mongodb": "^6.12.0",
+    "mongoose": "^8.8.4",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-step-wizard": "^5.3.11"
+  }
+}
