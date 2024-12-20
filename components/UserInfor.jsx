@@ -58,7 +58,7 @@ function UserInfor({ handleValue, nextStep }) {
 			</label>
 			<div className={style.container}>
 				<Button 
-					label={"Next"} 
+					label={"Próximo"} 
 					handleChange={nextStep}
 				/>
 			</div>

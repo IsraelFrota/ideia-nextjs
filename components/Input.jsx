@@ -7,7 +7,7 @@ function Input({ type, name, section, handleChangeValue }) {
 
 	const handleChange = (e) => {
 		setElement(e.target.value);
-
+		
 		handleChangeValue(section, name, e.target.value);
 	};
 

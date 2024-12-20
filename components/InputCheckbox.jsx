@@ -1,10 +1,6 @@
 import style from "../style/style.module.css";
 
-function InputCheckbox({ name, value, section, checked, handleChangeValue }) {
-
-	const handle = () => {
-		handleChangeValue(section, name, value);
-	};
+function InputCheckbox({ name, value, section, checked }) {
 
 	return (
 		<input 
@@ -14,7 +10,6 @@ function InputCheckbox({ name, value, section, checked, handleChangeValue }) {
 			value={value}
 			section={section}
 			checked={checked}
-			onChange={handle}
 			required 
 		/>
 	);
