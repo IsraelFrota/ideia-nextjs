@@ -1,14 +1,26 @@
+@font-face {
+	font-family: 'Roboto';
+	src: url('/public/Roboto/Roboto-Regular.ttf') format('ttf'),
+	     url('/public/Roboto/Roboto-Bold.ttf') format('ttf'),
+			 url('/public/Roboto/Roboto-Medium.ttf') format('tff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
 
 
 .container {
 	display: flex;
 	flex-direction: column;
-
+	
 	justify-content: center;
 	align-items: center;
 
 	gap: 10px;
 	padding: 10px 0px 10px 0px;
+	
+	font-family: 'Roboto', sans-serif;
 }
 
 .label_container {
@@ -40,7 +52,7 @@
 .select_style,
 .input_style {
 	margin-top: 20px;
-	width: 30%;
+	width: 40%;
 
 	border: none;
 	border-bottom: 1px solid rgba(30, 30, 30, .2);
