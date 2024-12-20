@@ -128,7 +128,7 @@ function FormShitsuke({ handleValue, onAddForm, previousStep }) {
 			</label>
 			<div className={style.container_button}>
 				<Button 
-					label={"Previous"}
+					label={"Anterior"}
 					handleChange={previousStep}	 
 				/>
 				<Button 
