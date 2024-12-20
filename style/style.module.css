@@ -1,0 +1,116 @@
+
+
+.container {
+	display: flex;
+	flex-direction: column;
+
+	justify-content: center;
+	align-items: center;
+
+	gap: 10px;
+	padding: 10px 0px 10px 0px;
+}
+
+.label_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	width: 50%;
+
+	border: 1px solid rgba(30, 30, 30, .1);
+	border-radius: 7px;
+	box-shadow: 1px 3px 5px rgba(30, 30, 30, .1);
+
+	padding: 10px;
+}
+
+.label_content {
+	padding: 0px 10px 0px 10px;
+	text-align: justify;
+}
+
+.label_content div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.select_style,
+.input_style {
+	margin-top: 20px;
+	width: 30%;
+
+	border: none;
+	border-bottom: 1px solid rgba(30, 30, 30, .2);
+	
+	height: 30px;
+}
+
+.input_style:focus {
+	outline: none;
+	border-bottom: 1px solid rgba(255, 166, 0, 0.5);
+	box-shadow: 1px 3px 5px rgba(30, 30, 30, .1);
+}
+
+.select_style {
+	background-color: transparent;
+}
+
+.select_style:focus {
+	outline: none;
+}
+
+.button_style {
+	width: 120px;
+	height: 30px;
+
+	border: none;
+	border-radius: 7px;
+
+	background-color: rgba(30, 30, 30, .8);
+	color: rgb(255, 255, 255);
+}
+
+.button_style:hover {
+	cursor: pointer;
+}
+
+.container_button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	margin-top: 10px;
+}
+
+.input_checkbox_style,
+.input_radio_content_style {
+	display: flex;
+	align-items: center;
+	margin: 3px;
+}
+
+.modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 300px;
+	height: 50px;
+
+	border: none;
+	border-radius: 7px;
+
+	background-color: rgba(87, 248, 87, .5);
+}
+
+.progress {
+	height: 5px;
+	background-color: #ccc;
+	border-radius: 3px;
+	margin-top: 10px;
+	width: 100%;
+	position: relative;
+}
