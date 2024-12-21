@@ -7,9 +7,6 @@
 	font-style: normal;
 }
 
-
-
-
 .container {
 	display: flex;
 	flex-direction: column;
@@ -125,4 +122,144 @@
 	margin-top: 10px;
 	width: 100%;
 	position: relative;
+}
+
+.home_container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.side_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	gap: 10px;
+
+	height: 300px;
+	width: 100px;
+
+	border: 1px solid rgba(30, 30, 30, .1);
+	box-shadow: 1px 3px 5px rgba(30, 30, 30, .1);
+	border-radius: 7px;
+}
+
+.option {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background-color: rgba(30, 30, 30, .1);
+	width: 70px;
+	height: 30px;
+
+	border-radius: 7px;
+}
+
+.option:hover {
+	cursor: pointer;
+}
+
+.text_link {
+	color: #000;
+	text-decoration: none;
+}
+
+.side_area {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 100vh;
+}
+
+.main_area {
+	display: flex;
+	width: 80%;
+	height: 100vh;
+}
+
+.program_description {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+	background-color: #202020;
+	color: #fff;
+
+	width: 40%;
+	height: 100%;
+
+	text-align: justify;
+	font-size: 18pt;
+}
+
+.program_description p {
+	padding: 0px 80px 0px 80px;
+}
+
+.program_5s {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background-color: #fba91f;
+	width: 60%;
+	height: 100vh;
+	gap: 40px;
+}
+
+.program_5s p {
+	font-size: 18pt;
+}
+
+.row1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.row2 {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 70%;
+}
+
+.row2 h1 {
+	font-size: 38pt;
+	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.row3 {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 50%;
+}
+
+.element {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background-color: #202020;
+	color: #fff;
+
+	width: 100px;
+	height: 100px;
+
+	border-radius: 50%;
+}
+
+.element p {
+	margin: 7px;
+	font-weight: bold;
 }
