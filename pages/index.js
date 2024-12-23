@@ -16,7 +16,7 @@ function Home() {
 						</Link>
 					</div>
 					<div className={style.option}>
-						<Link href="/" className={style.text_link}>
+						<Link href="/export" className={style.text_link}>
 							Exportar
 						</Link>
 					</div>
