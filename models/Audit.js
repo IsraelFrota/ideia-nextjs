@@ -29,7 +29,11 @@ const AuditSchema = new mongoose.Schema({
 		}, 
 		observation: {
 			type: String,
-		} 
+		},
+		score: {
+			type: Number,
+			required: true
+		},
 	},
 	seiton: {
 		objectLocal: {
@@ -38,6 +42,10 @@ const AuditSchema = new mongoose.Schema({
 		},
 		observation: {
 			type: String,
+		},
+		score: {
+			type: Number,
+			required: true
 		},
 	},
 	seiso: {
@@ -51,7 +59,11 @@ const AuditSchema = new mongoose.Schema({
 		},
 		observation: {
 			type: String,
-		}
+		},
+		score: {
+			type: Number,
+			required: true
+		},
 	},
 	seiketsu: {
 		employeeConduct: {
@@ -68,7 +80,11 @@ const AuditSchema = new mongoose.Schema({
 		},
 		observation: {
 			type: String,
-		}
+		},
+		score: {
+			type: Number,
+			required: true
+		},
 	},
 	shitsuke: {
 		prioritizationMatrix: {
@@ -77,6 +93,16 @@ const AuditSchema = new mongoose.Schema({
 		},
 		observation: {
 			type: String,
+		},
+		score: {
+			type: Number,
+			required: true
+		},
+	},
+	result: {
+		score: {
+			type: Number,
+			required: true
 		}
 	}
 });
