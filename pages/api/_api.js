@@ -5,8 +5,16 @@ export default async function handler(request, response) {
 	await connectDatabase();
 
 	if (request.method === "GET") {
+		const { query } = request.query;
+
+		if (!query) {
+			return response.status(400).json({ message: "Query parameter is required" });
+		}
+
 		try {
-			const audit = await Audit.find();
+			const audit = await Audit.find({
+				"auditInfo.nameAudited": { $regex: query, $options: "i" }
+			});
 			return response.status(200).json(audit);
 		}
 		catch (error) {
@@ -22,7 +30,8 @@ export default async function handler(request, response) {
 				seiton,
 				seiso,
 				seiketsu,
-				shitsuke
+				shitsuke,
+				result
 			} = request.body;
 			const newAudit = new Audit({ 
 				auditInfo, 
@@ -30,7 +39,8 @@ export default async function handler(request, response) {
 				seiton,
 				seiso,
 				seiketsu,
-				shitsuke 
+				shitsuke,
+				result 
 			});
 			await newAudit.save();
 			response.status(201).json(newAudit);
