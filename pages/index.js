@@ -1,4 +1,6 @@
 import Link from "next/link";
+
+import Element from "../components/Element";
 import Sidebar from "../components/Sidebar";
 
 import style from "../style/style.module.css";
@@ -29,38 +31,38 @@ function Home() {
 				</div>
 				<div className={style.program_5s}>
 					<div className={style.row1}>
-						<div className={style.element}>
-							<span>Seiri	</span>
-							<p>01</p>
-							<span>Operacional</span>
-						</div>
+						<Element
+							nameElement={"Seiri"}
+							numberElement={"01"}
+							typeElement={"Operacional"}
+						/>
 					</div>
 					<div className={style.row2}>
-						<div className={style.element}>
-							<span>Shitsuke</span>
-							<p>05</p>
-							<span>Psicológica</span>
-						</div>
+						<Element
+							nameElement={"Shitsuke"}
+							numberElement={"05"}
+							typeElement={"Psicológica"}
+						/>
 						<div>
 							<h1>5S</h1>
 						</div>
-						<div className={style.element}>
-						<span>Seiton</span>
-							<p>02</p>
-							<span>Operacional</span>
-						</div>
+						<Element
+							nameElement={"Seiton"}
+							numberElement={"02"}
+							typeElement={"Operacional"}
+						/>
 					</div>
 					<div className={style.row3}> 
-						<div className={style.element}>
-							<span>Seiketsu</span>
-							<p>04</p>
-							<span>Psicológica</span>
-						</div>
-						<div className={style.element}>
-							<span>Seiso</span>
-							<p>03</p>
-							<span>Operacional</span>
-						</div>
+						<Element
+							nameElement={"Seiketsu"}
+							numberElement={"04"}
+							typeElement={"Psicológica"}
+						/>
+						<Element
+							nameElement={"Seiso"}
+							numberElement={"03"}
+							typeElement={"Operacional"}
+						/>
 					</div>
 				</div>
 			</div>
