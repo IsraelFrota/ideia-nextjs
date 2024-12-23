@@ -7,9 +7,37 @@ import InputRadio from "../InputRadio";
 
 import style from "../../style/style.module.css";
 
-function FormSeiso({ handleValue, nextStep, previousStep }) {
+function FormSeiso({ handleValue, handleScore, nextStep, previousStep }) {
 	const [equipment, setEquipment] = useState('');
 	const [virtualEnvironment, setVirtualEnvironment] = useState('');
+
+	const sumScore = () => {
+		let value = 0;
+		if (equipment === "Sim") {
+			value += 10;
+		}
+		if (virtualEnvironment === "Sim") {
+			value += 10;
+		}
+		return value;
+	};
+
+	const handleEventScore = () => {
+		const value = sumScore();
+		handleScore(value);
+		handleScoreSeiso(value);
+		nextStep();
+	};
+
+	const handleScoreSeiso = (value) => {
+		handleValue((prevState) => ({
+			...prevState,
+			['seiso']: {
+				...prevState['seiso'],
+				['score']: value
+			}
+		}));
+	};
 
 	const handleEquipment = (e) => {
 		setEquipment(e.target.value);
@@ -142,7 +170,7 @@ function FormSeiso({ handleValue, nextStep, previousStep }) {
 				/>
 				<Button
 					label={"Próximo"}
-					handleChange={nextStep}
+					handleChange={handleEventScore}
 				/>
 			</div>
 		</div>

@@ -3,12 +3,29 @@ import { useState } from "react";
 import Button from "../Button";
 import Input from "../Input";
 import InputCheckbox from "../InputCheckbox";
-
-import style from "../../style/style.module.css";
 import InputRadio from "../InputRadio";
 
-function FormSeiton({ handleValue, nextStep, previousStep }) {
+import style from "../../style/style.module.css";
+
+function FormSeiton({ handleValue, handleScore, nextStep, previousStep }) {
 	const [objectLocal, setObjectLocal] = useState('');
+
+	const handleEventScore = () => {
+		const value = (objectLocal === "Sim") ? 20 : 0;
+		handleScore(value);
+		handleScoreSeiton(value);
+		nextStep();
+	};
+
+	const handleScoreSeiton = (value) => {
+		handleValue((prevState) => ({
+			...prevState,
+			['seiton']: {
+				...prevState['seiton'],
+				['score']: value
+			}
+		}));
+	};
 
 	const handleObjectLocal = (e) => {
 		setObjectLocal(e.target.value);
@@ -119,7 +136,7 @@ function FormSeiton({ handleValue, nextStep, previousStep }) {
 				/>
 				<Button
 					label={"Próximo"}
-					handleChange={nextStep}
+					handleChange={handleEventScore}
 				/>
 			</div>
 		</div>

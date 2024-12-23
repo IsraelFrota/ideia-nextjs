@@ -6,8 +6,25 @@ import InputRadio from "../InputRadio";
 
 import style from "../../style/style.module.css";
 
-function FormSeiri({ handleValue, nextStep, previousStep }) {
+function FormSeiri({ handleValue, handleScore, nextStep, previousStep }) {
 	const [selected, setSelected] = useState('');
+
+	const handleEventScore = () => {
+		const value = (selected === "Sim") ? 20 : (selected === "Não") ? 0 : 10;
+		handleScore(value);
+		handleScoreSeiri(value);
+		nextStep();
+	};
+
+	const handleScoreSeiri = (value) => {
+		handleValue((prevState) => ({
+			...prevState,
+			['seiri']: {
+				...prevState['seiri'],
+				['score']: value
+			}
+		}));
+	};
 
 	const handleEvent = (e) => {
 		setSelected(e.target.value);
@@ -108,7 +125,7 @@ function FormSeiri({ handleValue, nextStep, previousStep }) {
 				/>
 				<Button 
 					label={"Próximo"}
-					handleChange={nextStep}
+					handleChange={handleEventScore}
 				/>
 			</div>
 		</div>

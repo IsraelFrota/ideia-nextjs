@@ -8,14 +8,31 @@ import InputRadio from "../InputRadio";
 
 import style from "../../style/style.module.css";
 
-function FormShitsuke({ handleValue, onAddForm, previousStep }) {
+function FormShitsuke({ handleValue, handleScore, onAddForm, previousStep }) {
 	const [prioritizationMatrix, setPrioritizationMatrix] = useState('');
-
+	const [disabled, setDisabled] = useState(true);
 	const [modal, setModal] = useState(false);
 	const [styleConditional, setStyleConditional] = useState(false);
 	const [larguraProgresso, setLarguraProgresso] = useState(0);
 
 	const router = useRouter();
+
+	const handleEventScore = () => {
+		const value = (prioritizationMatrix === "Sim") ? 20 : 0;
+		handleScore(value);
+		handleScoreShitsuke(value);
+		setDisabled(!disabled);
+	};
+
+	const handleScoreShitsuke = (value) => {
+		handleValue((prevState) => ({
+			...prevState,
+			['shitsuke']: {
+				...prevState['shitsuke'],
+				['score']: value
+			}
+		}));
+	};
 
 	const handlePrioritizationMatrix = (e) => {
 		setPrioritizationMatrix(e.target.value);
@@ -130,9 +147,14 @@ function FormShitsuke({ handleValue, onAddForm, previousStep }) {
 					label={"Anterior"}
 					handleChange={previousStep}
 				/>
-				<Button
+				<Button 
 					label={"Salvar"}
+					handleChange={handleEventScore}
+				/>
+				<Button
+					label={"Enviar"}
 					handleChange={handleAddForm}
+					disabled={disabled}
 				/>
 			</div>
 			<div>

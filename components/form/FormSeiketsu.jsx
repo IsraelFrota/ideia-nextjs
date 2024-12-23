@@ -7,10 +7,51 @@ import InputRadio from "../InputRadio";
 
 import style from "../../style/style.module.css";
 
-function FormSeiketsu({ handleValue, nextStep, previousStep }) {
+function FormSeiketsu({ handleValue, handleScore, nextStep, previousStep }) {
 	const [employeeConduct, setEmployeeConduct] = useState('');
 	const [workingDay, setWorkingDay] = useState('');
 	const [generalScheduleRequests, setGeneralScheduleRequests] = useState('');
+
+	const sumScore = () => {
+		let value = 0;
+		if (employeeConduct === "Sim") {
+			value += 10; 
+		}
+		if (workingDay === "Sim") {
+			value += 10;
+		}
+		if (generalScheduleRequests === "Sim") {
+			value += 10;
+		}
+		else if (generalScheduleRequests === "Em partes") {
+			value += 5;
+		}
+
+		if (value === 30) {
+			return 20;
+		}
+		if (value >= 20) {
+			return 10;
+		}
+		return 0;
+	};
+
+	const handleEventScore = () => {
+		const value = sumScore();
+		handleScore(value);
+		handleScoreSeiketsu(value);
+		nextStep();
+	};
+
+	const handleScoreSeiketsu = (value) => {
+		handleValue((prevState) => ({
+			...prevState,
+			['seiketsu']: {
+				...prevState['seiketsu'],
+				['score']: value
+			}
+		}));
+	};
 
 	const handleEmployeeConduct = (e) => {
 		setEmployeeConduct(e.target.value);
@@ -188,7 +229,7 @@ function FormSeiketsu({ handleValue, nextStep, previousStep }) {
 				/>
 				<Button 
 					label={"Próximo"}
-					handleChange={nextStep}	 
+					handleChange={handleEventScore}	 
 				/>
 			</div>
 		</div>
