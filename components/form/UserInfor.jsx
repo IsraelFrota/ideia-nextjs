@@ -21,6 +21,16 @@ function UserInfor({ handleValue, nextStep }) {
 	return (
 		<div className={style.container}>
 			<label className={style.label_container}>
+				<div className={style.label_content}>
+					<div>
+						<h4>Formulário de Auditória 5S</h4>
+					</div>
+					<p>
+						Formulário para avaliação da metodologia 5S na empresa Israel Frota.
+					</p>
+				</div>
+			</label>
+			<label className={style.label_container}>
 				Data da auditoria:
 				<Input 
 					type={"date"}
