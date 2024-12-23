@@ -9,6 +9,7 @@ import Seiso from "../components/form/FormSeiso";       // 3°
 import Seiketsu from "../components/form/FormSeiketsu"; // 4°
 import Shitsuke from "../components/form/FormShitsuke"; // 5°
 
+import style from "../style/style.module.css";
 
 function App() {
 	const [formData, setFormData] = useState({
@@ -21,28 +22,46 @@ function App() {
 		seiri: {
 			meetsTheRequirement: '',
 			itemNotAllowed: '',
-			observation: '', 
+			observation: '',
+			score: 0,
 		},
 		seiton: {
 			objectLocal: '',
 			observation: '',
+			score: 0,
 		},
 		seiso: {
 			equipment: '',
 			virtualEnvironment: '',
 			observation: '',
+			score: 0,
 		},
 		seiketsu: {
 			employeeConduct: '',
 			workingDay: '',
 			generalScheduleRequests: '',
 			observation: '',
+			score: 0,
 		},
 		shitsuke: {
 			prioritizationMatrix: '',
 			observation: '',
+			score: 0,
+		},
+		result: {
+			score: 0
 		}
 	});
+
+	const handleScore = (value) => {
+		setFormData((prevState) => ({
+			...prevState,
+			result: {
+				...prevState.result,
+				score: formData.result.score + value
+			}
+		}));
+	};
 
 	const addAudit = async () => {
 		const { 
@@ -52,6 +71,7 @@ function App() {
 			seiso,
 			seiketsu,
 			shitsuke,
+			result
 		} = formData;
 
 		const response = fetch('/api/_api', {
@@ -65,20 +85,39 @@ function App() {
 				seiton,
 				seiso,
 				seiketsu,
-				shitsuke
+				shitsuke,
+				result
 			}),
 		});
 	};
 
 	return (
 		<div>
-			<StepWizard>
-				<UserInfor handleValue={setFormData} />
-				<Seiri handleValue={setFormData} />
-				<Seiton handleValue={setFormData} />
-				<Seiso handleValue={setFormData} />
-				<Seiketsu handleValue={setFormData} />
-				<Shitsuke handleValue={setFormData} onAddForm={addAudit} />
+			<StepWizard className={style.wizard}>
+				<UserInfor 
+					handleValue={setFormData} 
+				/>
+				<Seiri 
+					handleValue={setFormData} 
+					handleScore={handleScore} 
+				/>
+				<Seiton 
+					handleValue={setFormData} 
+					handleScore={handleScore} 
+				/>
+				<Seiso 
+					handleValue={setFormData} 
+					handleScore={handleScore} 
+				/>
+				<Seiketsu 
+					handleValue={setFormData} 
+					handleScore={handleScore} 
+				/>
+				<Shitsuke 
+					handleValue={setFormData} 
+					handleScore={handleScore} 
+					onAddForm={addAudit} 
+				/>
 			</StepWizard>
 		</div>
 	);
