@@ -2,12 +2,12 @@ import { useState } from "react";
 
 import StepWizard from "react-step-wizard";
 
-import UserInfor from "../components/UserInfor";
-import Seiri from "../components/FormSeiri";       // 1°
-import Seiton from "../components/FormSeiton";     // 2°
-import Seiso from "../components/FormSeiso";       // 3°
-import Seiketsu from "../components/FormSeiketsu"; // 4°
-import Shitsuke from "../components/FormShitsuke"; // 5°
+import UserInfor from "../components/form/UserInfor";
+import Seiri from "../components/form/FormSeiri";       // 1°
+import Seiton from "../components/form/FormSeiton";     // 2°
+import Seiso from "../components/form/FormSeiso";       // 3°
+import Seiketsu from "../components/form/FormSeiketsu"; // 4°
+import Shitsuke from "../components/form/FormShitsuke"; // 5°
 
 
 function App() {
