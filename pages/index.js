@@ -9,7 +9,7 @@ function Home() {
 	return (
 		<div className={style.home_container}>
 			<div className={style.side_area}>
-				<Sidebar>
+				<Sidebar className={style.sidebar}>
 					<div className={style.option}>
 						<Link href="/formAudit" className={style.text_link}>
 							Auditoria
