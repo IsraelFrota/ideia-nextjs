@@ -1,5 +1,13 @@
 import { useState } from "react";
 
+import AuditInfo from "../components/report/AuditInfo";
+import Seiri from "../components/report/Seiri";
+import Seiton from "../components/report/Seiton";
+import Seiso from "../components/report/Seiso";
+import Seiketsu from "../components/report/Seiketsu";
+import Shitsuke from "../components/report/Shitsuke";
+import Result from "../components/report/Result";
+
 import style from "../style/style.module.css";
 
 function ExportDocument() {
@@ -36,37 +44,6 @@ function ExportDocument() {
     }
   };
 
-  const AuditInfo = ({ data }) => {
-    const { date, nameAuditor, nameAudited, sector } = data.auditInfo;
-    
-    return (
-      <div className={style.report_data}>
-        <div className={style.report_title}>
-          <h3>Informações da Auditoria</h3>
-        </div>
-        <div className={style.report_row}>
-          <div className={style.report_cell}>
-            <p className={style.report_item}>
-              <span>Auditor: </span> {nameAuditor}
-            </p>
-            <p className={style.report_item}>
-              <span>Auditado: </span> {nameAudited}
-            </p>
-          </div>
-          <div className={style.report_cell}>
-            <p className={style.report_item}>
-              <span>Data da auditoria:</span> {date}
-            </p>
-            <p className={style.report_item}>
-              <span>Setor do profissional:</span> {sector}
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  };
- 
-
   return (
     <div className={style.report_container}>
       <div className={style.report_content}>
@@ -85,9 +62,20 @@ function ExportDocument() {
             {loading ? 'Buscando...' : 'Buscar'}
           </button>
         </div>
-        <div>
+        <div className={style.report}>
           <h1>Relatório da auditória</h1>
-          {result.length > 0 ? <AuditInfo data={result[0]} /> : <></>}
+          {result.length > 0 ? 
+            <>
+              <AuditInfo data={result[0]} />
+              <Seiri data={result[0]} />
+              <Seiton data={result[0]} />
+              <Seiso data={result[0]} />
+              <Seiketsu data={result[0]} />
+              <Shitsuke data={result[0]} />
+              <Result data={result[0]} />
+            </> : 
+            <></>
+          }
         </div>
       </div>
     </div>
