@@ -147,15 +147,16 @@ function FormShitsuke({ handleValue, handleScore, onAddForm, previousStep }) {
 					label={"Anterior"}
 					handleChange={previousStep}
 				/>
-				<Button 
-					label={"Salvar"}
-					handleChange={handleEventScore}
-				/>
-				<Button
-					label={"Enviar"}
-					handleChange={handleAddForm}
-					disabled={disabled}
-				/>
+				{disabled ?
+					<Button 
+						label={"Salvar"}
+						handleChange={handleEventScore}
+					/> :
+					<Button
+						label={"Enviar"}
+						handleChange={handleAddForm}
+					/>
+				}
 			</div>
 			<div>
 				{styleConditional && (
@@ -167,7 +168,7 @@ function FormShitsuke({ handleValue, handleScore, onAddForm, previousStep }) {
 								style={{
 									height: '100%',
 									width: `${larguraProgresso}%`,
-									backgroundColor: '#4caf50', // cor da barra de progresso
+									backgroundColor: '#4caf50',
 									transition: 'width 0.1s ease-in-out',
 									borderRadius: '3px',
 								}}
