@@ -22,6 +22,14 @@ function Seiso({ data }) {
 		<div className={style.report_data}>
 			<div className={style.report_title}>
 				<h3>Seiso</h3>
+				<p>
+					Seiso é o terceiro passo da metodologia 5S e é traduzido como "limpeza" ou "higienização". Ele se
+					concentra em realizar uma limpeza completa e profunda do ambiente de trabalho, incluindo as
+					áreas que são normalmente ignoradas ou difíceis de limpar. O objetivo é remover toda a sujeira,
+					suor, e sujidade acumulada, para garantir que o ambiente de trabalho seja limpo e saudável para os
+					trabalhadores e para aumentar a eficiência e organização. Além disso, é uma oportunidade para
+					identificar problemas ocultos, como vazamentos, problemas elétricos, e problemas mecânicos.
+				</p>
 			</div>
 			<div className={style.report_row}>
 				<div className={style.report_cell}>

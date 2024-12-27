@@ -30,6 +30,11 @@ function Seiketsu({ data }) {
 		<div className={style.report_data}>
 			<div className={style.report_title}>
 				<h3>Seiketsu</h3>
+				<p>
+					Seiketsu é o quarto passo da metodologia 5S, que se concentra em estabelecer e manter a ordem e
+					limpeza através da criação de procedimentos e rotinas, treinamento de funcionários e inspeções
+					regulares, visando manter a limpeza e organização a longo prazo.
+				</p>
 			</div>
 			<div className={style.report_row}>
 				<div className={style.report_cell}>

@@ -6,6 +6,11 @@ function Seiton({ data }) {
 		<div className={style.report_data}>
 			<div className={style.report_title}>
 				<h3>Seiton</h3>
+				<p>
+					O senso de ordenação preza pela identificação e otimização de fluxos de trabalho, áreas de
+					trabalho, equipamentos e ferramentas, materiais, documentos, sinais, iluminação, limpeza,
+					segurança e espaço.
+				</p>
 			</div>
 			<div className={style.report_row}>
 				<div className={style.report_cell}>

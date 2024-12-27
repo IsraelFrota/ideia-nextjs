@@ -7,6 +7,11 @@ function Shitsuke({ data }) {
 		<div className={style.report_data}>
 			<div className={style.report_title}>
 				<h3>Shitsuke</h3>
+				<p>
+					Shitsuke é o quinto passo da metodologia 5S e é traduzido como “disciplina” ou “manutenção”. Ele
+					se concentra em tornar os procedimentos e rotinas estabelecidos no passo anterior (Seiketsu)
+					parte da rotina diária e incorporando-os na cultura organizacional.
+				</p>
 			</div>
 			<div className={style.report_row}>
 				<div className={style.report_cell}>

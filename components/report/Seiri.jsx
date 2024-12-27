@@ -7,6 +7,12 @@ function Seiri({ data }) {
 		<div className={style.report_data}>
 			<div className={style.report_title}>
 				<h3>Seiri</h3>
+				<p>
+					O senso de utilização é o primeiro passo da metodologia 5S, que se concentra em identificar e
+					separar itens necessários dos não necessários em um ambiente de trabalho. O objetivo é remover
+					itens não necessários para liberar espaço e melhorar a eficiência e organização do ambiente de
+					trabalho.
+				</p>
 			</div>
 			<div className={style.report_row}>
 				<div className={style.report_cell}>
