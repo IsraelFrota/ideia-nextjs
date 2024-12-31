@@ -34,6 +34,9 @@ const AuditSchema = new mongoose.Schema({
 			type: Number,
 			required: true
 		},
+		evidence: {
+			type: Array,
+		}
 	},
 	seiton: {
 		objectLocal: {
@@ -47,6 +50,9 @@ const AuditSchema = new mongoose.Schema({
 			type: Number,
 			required: true
 		},
+		evidence: {
+			type: Array,
+		}
 	},
 	seiso: {
 		equipment: {
@@ -64,6 +70,9 @@ const AuditSchema = new mongoose.Schema({
 			type: Number,
 			required: true
 		},
+		evidence: {
+			type: Array,
+		}
 	},
 	seiketsu: {
 		employeeConduct: {
@@ -85,6 +94,9 @@ const AuditSchema = new mongoose.Schema({
 			type: Number,
 			required: true
 		},
+		evidence: {
+			type: Array,
+		}
 	},
 	shitsuke: {
 		prioritizationMatrix: {
@@ -98,6 +110,9 @@ const AuditSchema = new mongoose.Schema({
 			type: Number,
 			required: true
 		},
+		evidence: {
+			type: Array,
+		}
 	},
 	result: {
 		score: {
