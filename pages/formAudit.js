@@ -24,17 +24,20 @@ function App() {
 			itemNotAllowed: '',
 			observation: '',
 			score: 0,
+			evidence: [],
 		},
 		seiton: {
 			objectLocal: '',
 			observation: '',
 			score: 0,
+			evidence: [],
 		},
 		seiso: {
 			equipment: '',
 			virtualEnvironment: '',
 			observation: '',
 			score: 0,
+			evidence: [],
 		},
 		seiketsu: {
 			employeeConduct: '',
@@ -42,11 +45,13 @@ function App() {
 			generalScheduleRequests: '',
 			observation: '',
 			score: 0,
+			evidence: [],
 		},
 		shitsuke: {
 			prioritizationMatrix: '',
 			observation: '',
 			score: 0,
+			evidence: [],
 		},
 		result: {
 			score: 0
@@ -74,21 +79,27 @@ function App() {
 			result
 		} = formData;
 
-		const response = fetch('/api/_api', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ 
-				auditInfo,
-				seiri,
-				seiton,
-				seiso,
-				seiketsu,
-				shitsuke,
-				result
-			}),
-		});
+		console.log(formData);
+
+		try {
+			const response = fetch('/api/_api', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ 
+					auditInfo,
+					seiri,
+					seiton,
+					seiso,
+					seiketsu,
+					shitsuke,
+					result
+				}),
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (
