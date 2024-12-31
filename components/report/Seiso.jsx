@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 import style from "../../style/style.module.css";
 
 function Seiso({ data }) {
-	const { equipment, virtualEnvironment, observation, score } = data.seiso;
+	const { 
+		equipment, 
+		virtualEnvironment, 
+		observation, 
+		evidence, 
+		score 
+	} = data.seiso;
 	const [result, setResult] = useState("");
 
 	useEffect(() => {
@@ -55,6 +61,21 @@ function Seiso({ data }) {
 					</div> :
 					<></>
 				}
+			</div>
+			<div className={style.report_row}>
+					{evidence.map((url, index) => (
+						/*<span
+							key={index}
+						>
+							Evidência {index+1}: {url}
+						</span>*/
+						<img 
+							className={style.report_image}
+							key={index} 
+							src={url} 
+							alt={`Evidência ${index+1}`} 
+						/>
+					))}
 			</div>
 		</div>
 	);

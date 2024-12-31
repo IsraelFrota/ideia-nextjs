@@ -1,7 +1,13 @@
 import style from "../../style/style.module.css";
 
 function Seiri({ data }) {
-	const { meetsTheRequirement, itemNotAllowed, observation, score } = data.seiri;
+	const { 
+		meetsTheRequirement, 
+		itemNotAllowed, 
+		observation, 
+		evidence, 
+		score 
+	} = data.seiri;
 
 	return (
 		<div className={style.report_data}>
@@ -38,6 +44,21 @@ function Seiri({ data }) {
 					</div> :
 					<></>
 				}
+			</div>
+			<div className={style.report_row}>
+					{evidence.map((url, index) => (
+						/*<span
+							key={index}
+						>
+							Evidência {index+1}: {url}
+						</span>*/
+						<img 
+							className={style.report_image}
+							key={index} 
+							src={url} 
+							alt={`Evidência ${index+1}`} 
+						/>
+					))}
 			</div>
 		</div>
 	);

@@ -3,7 +3,14 @@ import { useEffect, useState } from "react";
 import style from "../../style/style.module.css";
 
 function Seiketsu({ data }) {
-	const { employeeConduct, workingDay, generalScheduleRequests, observation, score } = data.seiketsu;
+	const { 
+		employeeConduct, 
+		workingDay, 
+		generalScheduleRequests, 
+		observation, 
+		evidence, 
+		score 
+	} = data.seiketsu;
 	const [result, setResult] = useState("");
 
 	useEffect(() => {
@@ -60,6 +67,21 @@ function Seiketsu({ data }) {
 					</div> :
 					<></>
 				}
+			</div>
+			<div className={style.report_row}>
+					{evidence.map((url, index) => (
+						/*<span
+							key={index}
+						>
+							Evidência {index+1}: {url}
+						</span>*/
+						<img 
+							className={style.report_image}
+							key={index} 
+							src={url} 
+							alt={`Evidência ${index+1}`} 
+						/>
+					))}
 			</div>
 		</div>
 	);

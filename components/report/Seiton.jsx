@@ -1,7 +1,12 @@
 import style from "../../style/style.module.css";
 
 function Seiton({ data }) {
-	const { objectLocal, observation, score } = data.seiton;
+	const { 
+		objectLocal, 
+		observation, 
+		evidence,
+		score 
+	} = data.seiton;
 	return (
 		<div className={style.report_data}>
 			<div className={style.report_title}>
@@ -36,6 +41,21 @@ function Seiton({ data }) {
 					</div> :
 					<></>
 				}
+			</div>
+			<div className={style.report_row}>
+					{evidence.map((url, index) => (
+						/*<span
+							key={index}
+						>
+							Evidência {index+1}: {url}
+						</span>*/
+						<img 
+							className={style.report_image}
+							key={index} 
+							src={url} 
+							alt={`Evidência ${index+1}`} 
+						/>
+					))}
 			</div>
 		</div>
 	);

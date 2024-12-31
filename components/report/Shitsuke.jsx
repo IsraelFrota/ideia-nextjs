@@ -1,7 +1,12 @@
 import style from "../../style/style.module.css";
 
 function Shitsuke({ data }) {
-	const { prioritizationMatrix, observation, score } = data.shitsuke;
+	const { 
+		prioritizationMatrix, 
+		observation,
+		evidence, 
+		score 
+	} = data.shitsuke;
 
 	return (
 		<div className={style.report_data}>
@@ -37,6 +42,21 @@ function Shitsuke({ data }) {
 					</div> :
 					<></>
 				}
+			</div>
+			<div className={style.report_row}>
+					{evidence.map((url, index) => (
+						/*<span
+							key={index}
+						>
+							Evidência {index+1}: {url}
+						</span>*/
+						<img 
+							className={style.report_image}
+							key={index} 
+							src={url} 
+							alt={`Evidência ${index+1}`} 
+						/>
+					))}
 			</div>
 		</div>
 	);
