@@ -6,6 +6,8 @@ import Input from "../Input";
 import InputCheckbox from "../InputCheckbox";
 import InputRadio from "../InputRadio";
 
+import uploadToGitHub from "../../pages/api/_upload";
+
 import style from "../../style/style.module.css";
 
 function FormShitsuke({ handleValue, handleScore, onAddForm, previousStep }) {
@@ -14,14 +16,47 @@ function FormShitsuke({ handleValue, handleScore, onAddForm, previousStep }) {
 	const [modal, setModal] = useState(false);
 	const [styleConditional, setStyleConditional] = useState(false);
 	const [larguraProgresso, setLarguraProgresso] = useState(0);
+	const [files, setFiles] = useState(null);
+	const [imageUrls, setImagesUrls] = useState([]);
 
 	const router = useRouter();
+
+	const handleImagesUpload = async () => {
+		if (!files) {
+			return;
+		}
+
+		const urls = [];
+
+		for (let index = 0; index < files.length; index++) {
+			try {
+				const responseUrl = await uploadToGitHub(files[index], files[index].name);
+				const rawUrl = responseUrl.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+				urls.push(rawUrl);
+			} catch (error) {
+				console.log(error);
+			}
+		}
+
+		setImagesUrls(urls);
+	};
 
 	const handleEventScore = () => {
 		const value = (prioritizationMatrix === "Sim") ? 20 : 0;
 		handleScore(value);
 		handleScoreShitsuke(value);
+		handleImageShitsuke();
 		setDisabled(!disabled);
+	};
+
+	const handleImageShitsuke = () => {
+		handleValue((prevState) => ({
+			...prevState,
+			['shitsuke']: {
+				...prevState['shitsuke'],
+				['evidence']: imageUrls
+			}
+		}));
 	};
 
 	const handleScoreShitsuke = (value) => {
@@ -142,6 +177,20 @@ function FormShitsuke({ handleValue, handleScore, onAddForm, previousStep }) {
 					Planejamento, seja e grupo ou individual
 				</div>
 			</label>
+			<label className={style.label_container}>
+				Evidências:
+				<div className={style.upload}>
+					<input
+						type="file"
+						name="evidence"
+						multiple
+						onChange={(e) => setFiles(e.target.files)}
+					/>
+					<button onClick={handleImagesUpload}>
+						Salvar
+					</button>
+				</div>
+			</label>
 			<div className={style.container_button}>
 				<Button
 					label={"Anterior"}
@@ -181,4 +230,4 @@ function FormShitsuke({ handleValue, handleScore, onAddForm, previousStep }) {
 	);
 }
 
-export default FormShitsuke
+export default FormShitsuke;

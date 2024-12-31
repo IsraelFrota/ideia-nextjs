@@ -4,16 +4,51 @@ import Button from "../Button";
 import Input from "../Input";
 import InputRadio from "../InputRadio";
 
+import uploadToGitHub from "../../pages/api/_upload";
+
 import style from "../../style/style.module.css";
 
 function FormSeiri({ handleValue, handleScore, nextStep, previousStep }) {
 	const [selected, setSelected] = useState('');
+	const [files, setFiles] = useState(null);
+	const [imageUrls, setImagesUrls] = useState([]);
+
+	const handleImagesUpload = async () => {
+		if (!files) {
+			return;
+		}
+
+		const urls = [];
+
+		for (let index = 0; index < files.length; index++) {
+			try {
+				const responseUrl = await uploadToGitHub(files[index], files[index].name);
+				const rawUrl = responseUrl.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+				urls.push(rawUrl);
+			} catch (error) {
+				console.log(error);
+			}
+		}
+
+		setImagesUrls(urls);
+	};
 
 	const handleEventScore = () => {
 		const value = (selected === "Sim") ? 20 : (selected === "Não") ? 0 : 10;
 		handleScore(value);
 		handleScoreSeiri(value);
+		handleImageSeiri();
 		nextStep();
+	};
+
+	const handleImageSeiri = () => {
+		handleValue((prevState) => ({
+			...prevState,
+			['seiri']: {
+				...prevState['seiri'],
+				['evidence']: imageUrls
+			}
+		}));
 	};
 
 	const handleScoreSeiri = (value) => {
@@ -117,6 +152,20 @@ function FormSeiri({ handleValue, handleScore, nextStep, previousStep }) {
 					section={"seiri"}
 					handleChangeValue={handleEventValue}
 				/>
+			</label>
+			<label className={style.label_container}>
+				Evidências:
+				<div className={style.upload}>
+					<input
+						type="file"
+						name="evidence"
+						multiple
+						onChange={(e) => setFiles(e.target.files)}
+					/>
+					<button onClick={handleImagesUpload}>
+						Salvar
+					</button>
+				</div>
 			</label>
 			<div className={style.container_button}>
 				<Button 

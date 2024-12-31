@@ -5,12 +5,16 @@ import Input from "../Input";
 import InputCheckbox from "../InputCheckbox";
 import InputRadio from "../InputRadio";
 
+import uploadToGitHub from "../../pages/api/_upload";
+
 import style from "../../style/style.module.css";
 
 function FormSeiketsu({ handleValue, handleScore, nextStep, previousStep }) {
 	const [employeeConduct, setEmployeeConduct] = useState('');
 	const [workingDay, setWorkingDay] = useState('');
 	const [generalScheduleRequests, setGeneralScheduleRequests] = useState('');
+	const [files, setFiles] = useState(null);
+	const [imageUrls, setImagesUrls] = useState([]);
 
 	const sumScore = () => {
 		let value = 0;
@@ -36,11 +40,42 @@ function FormSeiketsu({ handleValue, handleScore, nextStep, previousStep }) {
 		return 0;
 	};
 
+	const handleImagesUpload = async () => {
+		if (!files) {
+			return;
+		}
+
+		const urls = [];
+
+		for (let index = 0; index < files.length; index++) {
+			try {
+				const responseUrl = await uploadToGitHub(files[index], files[index].name);
+				const rawUrl = responseUrl.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+				urls.push(rawUrl);
+			} catch (error) {
+				console.log(error);
+			}
+		}
+
+		setImagesUrls(urls);
+	};
+
 	const handleEventScore = () => {
 		const value = sumScore();
 		handleScore(value);
 		handleScoreSeiketsu(value);
+		handleImageSeiketsu();
 		nextStep();
+	};
+
+	const handleImageSeiketsu = () => {
+		handleValue((prevState) => ({
+			...prevState,
+			['seiketsu']: {
+				...prevState['seiketsu'],
+				['evidence']: imageUrls
+			}
+		}));
 	};
 
 	const handleScoreSeiketsu = (value) => {
@@ -220,6 +255,20 @@ function FormSeiketsu({ handleValue, handleScore, nextStep, previousStep }) {
 						section={"seiketsu"}
 					/>
 					Captura da assiduidade do colaborador (Pontomais ou frequência)
+				</div>
+			</label>
+			<label className={style.label_container}>
+				Evidências:
+				<div className={style.upload}>
+					<input
+						type="file"
+						name="evidence"
+						multiple
+						onChange={(e) => setFiles(e.target.files)}
+					/>
+					<button onClick={handleImagesUpload}>
+						Salvar
+					</button>
 				</div>
 			</label>
 			<div className={style.container_button}>

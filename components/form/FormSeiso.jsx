@@ -5,11 +5,15 @@ import Input from "../Input";
 import InputCheckbox from "../InputCheckbox";
 import InputRadio from "../InputRadio";
 
+import uploadToGitHub from "../../pages/api/_upload";
+
 import style from "../../style/style.module.css";
 
 function FormSeiso({ handleValue, handleScore, nextStep, previousStep }) {
 	const [equipment, setEquipment] = useState('');
 	const [virtualEnvironment, setVirtualEnvironment] = useState('');
+	const [files, setFiles] = useState(null);
+	const [imageUrls, setImagesUrls] = useState([]);
 
 	const sumScore = () => {
 		let value = 0;
@@ -22,11 +26,42 @@ function FormSeiso({ handleValue, handleScore, nextStep, previousStep }) {
 		return value;
 	};
 
+	const handleImagesUpload = async () => {
+		if (!files) {
+			return;
+		}
+
+		const urls = [];
+
+		for (let index = 0; index < files.length; index++) {
+			try {
+				const responseUrl = await uploadToGitHub(files[index], files[index].name);
+				const rawUrl = responseUrl.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+				urls.push(rawUrl);
+			} catch (error) {
+				console.log(error);
+			}
+		}
+
+		setImagesUrls(urls);
+	};
+
 	const handleEventScore = () => {
 		const value = sumScore();
 		handleScore(value);
 		handleScoreSeiso(value);
+		handleImageSeiso();
 		nextStep();
+	};
+
+	const handleImageSeiso = () => {
+		handleValue((prevState) => ({
+			...prevState,
+			['seiso']: {
+				...prevState['seiso'],
+				['evidence']: imageUrls
+			}
+		}));
 	};
 
 	const handleScoreSeiso = (value) => {
@@ -161,6 +196,20 @@ function FormSeiso({ handleValue, handleScore, nextStep, previousStep }) {
 					/>
 					Captura da lixeira no ambiente virtual (e-mail corporativo, área de trabalho e
 					pasta de download)
+				</div>
+			</label>
+			<label className={style.label_container}>
+				Evidências:
+				<div className={style.upload}>
+					<input
+						type="file"
+						name="evidence"
+						multiple
+						onChange={(e) => setFiles(e.target.files)}
+					/>
+					<button onClick={handleImagesUpload}>
+						Salvar
+					</button>
 				</div>
 			</label>
 			<div className={style.container_button}>
