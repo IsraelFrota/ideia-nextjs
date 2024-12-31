@@ -54,7 +54,9 @@ function ExportDocument() {
 
     doc.html(contentRef.current, {
       callback: function (doc) {
-        doc.save("relatorio.pdf");
+        const { date, nameAudited } = result[0].auditInfo;
+        const dateFormated = new Date(date).toLocaleDateString('pt-br');
+        doc.save(`Relatorio da auditoria - ${nameAudited} ${dateFormated}}.pdf`);
       },
       margin: [10, 10, 10, 10],
       x: 10,
@@ -81,10 +83,17 @@ function ExportDocument() {
             disabled={loading}
           />
         </div>
-        <div className={style.report} ref={contentRef}>
-          {result.length > 0 ? 
-            <>
-              <h1>Relatório da auditória</h1>
+        {result.length > 0 ? 
+          <>
+            <div className={style.report} ref={contentRef}>
+              <div className={style.image_logo}>
+                <h1>Relatório da auditória</h1>
+                <img 
+                  className={style.image}
+                  src="/assets/logo.png" 
+                  alt="Logo da empresa"
+                />
+              </div>
               <AuditInfo data={result[0]} />
               <Seiri data={result[0]} />
               <Seiton data={result[0]} />
@@ -92,16 +101,16 @@ function ExportDocument() {
               <Seiketsu data={result[0]} />
               <Shitsuke data={result[0]} />
               <Result data={result[0]} />
-            </> : 
-            <></>
-          }
-        </div>
-        <div className={style.export_area}>
-          <Button
-            label={"Exportar"} 
-            handleChange={handleExport} 
-          />
-        </div>
+            </div> 
+              <div className={style.export_area}>
+              <Button
+                label={"Exportar"} 
+                handleChange={handleExport} 
+              />
+            </div> 
+          </>: 
+          <></>
+        }
       </div>
     </div>
   );
