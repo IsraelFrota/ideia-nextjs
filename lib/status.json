@@ -1,0 +1,53 @@
+{
+  "funny": {
+    "excellent": [
+      "Isso sim é sucesso, até o Wi-Fi tá aplaudindo!",
+      "Tá brilhando mais que meme viral!",
+      "É isso aí, essa é a vibe que a gente gosta!"
+    ],
+    "potentialToImprove": [
+      "Tá bom, mas ainda falta aquele tempero de mestre!",
+      "Quase lá, só falta aquele empurrãozinho!",
+      "Tá no caminho, mas ainda tem uns trechos esburacados."
+    ],
+    "notGood": [
+      "Isso aí está mais perdido que pino de teste de bebê!",
+      "Tá feio igual nota de R$ 2,00 amassada no bolso!",
+      "Ih, isso não deu nem pra dar um like!"
+    ]
+  },
+  "neutral": {
+    "excellent": [
+      "Muito bom, realmente impressionante!",
+      "Ótimo trabalho, superou as expectativas!",
+      "Excelente, nada a acrescentar!"
+    ],
+    "potentialToImprove": [
+      "Está bom, mas ainda há espaço para ajustes.",
+      "Tem potencial, apenas precisa de um toque final.",
+      "Boa base, mas algumas melhorias seriam bem-vindas."
+    ],
+    "notGood": [
+      "Há bastante o que melhorar.",
+      "Não está atendendo às expectativas no momento.",
+      "Precisamos revisar isso, não está no nível esperado."
+    ]
+  },
+  "formal": {
+    "excellent": [
+      "Excelente desempenho, de fato, está acima da média.",
+      "Trabalho impecável, é um ótimo reflexo de sua competência.",
+      "Muito bem executado, sem falhas perceptíveis."
+    ],
+    "potentialToImprove": [
+      "Embora o resultado seja satisfatório, há margem para aperfeiçoamento.",
+      "O trabalho está em uma boa direção, porém ainda precisa de ajustes finos.",
+      "A execução foi boa, mas existem oportunidades claras para melhoria."
+    ],
+    "notGood": [
+      "O desempenho apresentado não está atendendo aos padrões necessários.",
+      "O resultado está abaixo do esperado e requer revisão substancial.",
+      "Identificamos diversas áreas de melhoria que precisam ser abordadas com urgência."
+    ]
+  }
+}
